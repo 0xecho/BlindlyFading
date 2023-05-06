@@ -1,0 +1,3 @@
+- create DB on server, use repository pattern
+- setup tests, runners and coverage reporting
+- setup react components, pages, hooks, contexts etc.

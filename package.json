@@ -1,0 +1,17 @@
+{
+  "name": "blindlyfading",
+  "version": "0.0.1",
+  "description": "A small music guessing game",
+  "scripts": {
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "build": "npm run build --workspaces"
+  },
+  "author": "Elias Amha",
+  "license": "MIT",
+  "workspaces": [
+    "api-server",
+    "client",
+    "shared-utils"
+  ]
+}

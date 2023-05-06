@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  api-server:
+    build:
+      context: ./
+      dockerfile: api-server/Dockerfile
+      target: development
+    image: api-server
+    container_name: api-server
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    env_file:
+      - api-server/.env
+    networks:
+      - api-network
+    
+  client:
+    build:
+      context: ./
+      dockerfile: client/Dockerfile
+      target: development
+    image: client
+    container_name: client
+    restart: unless-stopped
+    volumes:
+      - /app/node_modules
+      - ./client:/app/client
+    env_file:
+      - client/.env
+    ports:
+      - "3001:3001"
+    networks:
+      - api-network
+
+networks:
+  api-network:
+    driver: bridge
