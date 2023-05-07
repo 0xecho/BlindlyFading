@@ -35,6 +35,21 @@ services:
       - "3001:3001"
     networks:
       - api-network
+  
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: unless-stopped
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=blindlyfading
+    networks:
+      - api-network
+    
+  
 
 networks:
   api-network:
