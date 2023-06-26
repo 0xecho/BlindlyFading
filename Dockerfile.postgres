@@ -1,0 +1,3 @@
+FROM library/postgres:15
+
+RUN [ "bash", "-c", "echo \"CREATE USER postgres; CREATE DATABASE blindlyfading; GRANT ALL PRIVILEGES ON DATABASE blindlyfading TO postgres;\" > /docker-entrypoint-initdb.d/init.sql" ]

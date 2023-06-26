@@ -6,7 +6,6 @@ services:
       context: ./
       dockerfile: api-server/Dockerfile
       target: development
-    image: api-server
     container_name: api-server
     restart: unless-stopped
     volumes:
@@ -15,29 +14,32 @@ services:
       - "3000:3000"
     env_file:
       - api-server/.env
+    environment:
+      - DB_HOST=postgres
     networks:
       - api-network
     
-  client:
-    build:
-      context: ./
-      dockerfile: client/Dockerfile
-      target: development
-    image: client
-    container_name: client
-    restart: unless-stopped
-    volumes:
-      - /app/node_modules
-      - ./client:/app/client
-    env_file:
-      - client/.env
-    ports:
-      - "3001:3001"
-    networks:
-      - api-network
+  # client:
+  #   build:
+  #     context: ./
+  #     dockerfile: client/Dockerfile
+  #     target: development
+  #   container_name: client
+  #   restart: unless-stopped
+  #   volumes:
+  #     - /app/node_modules
+  #     - ./client:/app/client
+  #   env_file:
+  #     - client/.env
+  #   ports:
+  #     - "3001:3001"
+  #   networks:
+  #     - api-network
   
   postgres:
-    image: postgres:15
+    build: 
+      context: ./
+      dockerfile: Dockerfile.postgres
     container_name: postgres
     restart: unless-stopped
     volumes:
@@ -48,8 +50,7 @@ services:
       - POSTGRES_DB=blindlyfading
     networks:
       - api-network
-    
-  
+
 
 networks:
   api-network:

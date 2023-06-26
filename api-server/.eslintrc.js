@@ -1,5 +1,8 @@
 module.exports = {
-    "extends": [
-        "semistandard"
-    ]
-}
+  extends: [
+    'semistandard'
+  ],
+  rules: {
+    'sort-imports': 2
+  }
+};

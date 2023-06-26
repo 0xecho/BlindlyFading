@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "NODE_ENV=development nodemon index.ts",
+    "lint": "eslint . --fix",
     "prod": "npm run build && NODE_ENV=production node dist/index.js",
     "test": "jest --coverage"
   },

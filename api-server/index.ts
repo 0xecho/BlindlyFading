@@ -1,9 +1,9 @@
 import { createHTTPServer } from '@trpc/server/adapters/standalone';
-import { z } from 'zod';
 import cors from 'cors';
+import { z } from 'zod';
 
-import "reflect-metadata"
-import { initializeDb, AppDataSource } from './app/db';
+import "reflect-metadata";
+import { AppDataSource, initializeDb } from './app/db';
 import { User } from './app/models/User';
 import environment from './config/env';
 import { publicProcedure, router } from './config/trpc';

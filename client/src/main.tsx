@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 
 import trpc from "./trpc";
 import "./index.css";
-import type { User } from "api-server/db";
+import type { User } from "@api/models/User";
 
 type UserListProps = {
   selectedId: string | undefined;
